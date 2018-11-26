@@ -1,0 +1,7 @@
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\bin\Debug\Hello.exe.config
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\bin\Debug\Hello.exe
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\bin\Debug\Hello.pdb
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\obj\Debug\Hello.csprojAssemblyReference.cache
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\obj\Debug\Hello.csproj.CoreCompileInputs.cache
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\obj\Debug\Hello.exe
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Hello\Hello\Hello\obj\Debug\Hello.pdb

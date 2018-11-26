@@ -1,0 +1,14 @@
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\bin\Debug\Grades.pdb
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\obj\Debug\Grades.csprojAssemblyReference.cache
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\obj\Debug\Grades.csproj.CoreCompileInputs.cache
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\obj\Debug\Grades.pdb
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\bin\Debug\Grades.exe.config
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\bin\Debug\Grades.exe
+C:\Users\ocani\Google Drive\Centropy\csharp-learning\Grades\Grades\obj\Debug\Grades.exe
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\bin\Debug\Grades.exe.config
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\bin\Debug\Grades.exe
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\bin\Debug\Grades.pdb
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\obj\Debug\Grades.csprojAssemblyReference.cache
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\obj\Debug\Grades.csproj.CoreCompileInputs.cache
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\obj\Debug\Grades.exe
+C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Grades\Grades\obj\Debug\Grades.pdb
