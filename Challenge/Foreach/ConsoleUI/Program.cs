@@ -10,40 +10,24 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            List<string> people = getNames();
+            List<string> peopleNames = getPeopleNames();
 
-            foreach (string person in people)
+            foreach (string personName in peopleNames)
             {
-                Console.WriteLine($"Hello, { person }");
+                Console.WriteLine($"Hello, { personName }");
             }
-
-            Console.ReadLine();
-
-            List<PersonModel> personModels = getPersonModels();
-
-            foreach (PersonModel person in personModels)
-            {
-                Console.WriteLine($"Hello, { person.FirstName } { person.LastName } ");
-            }
-
         }
 
-        private static List<PersonModel> getPersonModels()
-        {
-            List<PersonModel> output = new List<PersonModel>();
-
-            output.Add(new PersonModel { FirstName = "Mark", LastName = "James" });
-            output.Add(new PersonModel { FirstName = "Jenny", LastName = "Hammond" });
-
-            return output;
-        }
-
-        private static List<string> getNames()
+        static List<string> getPeopleNames()
         {
             List<string> output = new List<string>();
 
-            output.Add("Ricky");
+            output.Add("Kevin");
             output.Add("Mark");
+            output.Add("Chris");
+            output.Add("Gemma");
+            output.Add("Michael");
+            output.Add("Alexandra");
 
             return output;
         }

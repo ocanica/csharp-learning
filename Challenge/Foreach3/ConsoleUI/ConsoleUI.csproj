@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5AC3668-33E3-4914-B5F1-4291763A1DEF}</ProjectGuid>
+    <ProjectGuid>{657AFFA8-51BB-4FC5-BC23-D0EF4B48509F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsoleUI</RootNamespace>
     <AssemblyName>ConsoleUI</AssemblyName>
@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Person.cs" />
+    <Compile Include="PersonDataCapture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

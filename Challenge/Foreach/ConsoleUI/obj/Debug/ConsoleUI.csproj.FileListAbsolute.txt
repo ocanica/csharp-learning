@@ -1,7 +1,0 @@
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\bin\Debug\ConsoleUI.exe.config
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\bin\Debug\ConsoleUI.exe
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\bin\Debug\ConsoleUI.pdb
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\obj\Debug\ConsoleUI.csprojAssemblyReference.cache
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\obj\Debug\ConsoleUI.exe
-C:\Users\ocani\Google Drive\Code\learning\csharp-learning\Challenge\Foreach\ConsoleUI\obj\Debug\ConsoleUI.pdb

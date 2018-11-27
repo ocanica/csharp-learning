@@ -12,7 +12,9 @@ namespace ConsoleUI
         {
             Person output = new Person();
 
+            StandardMessages.InstructionMessage("first");
             output.FirstName = Console.ReadLine();
+            StandardMessages.InstructionMessage("last");
             output.LastName = Console.ReadLine();
 
             return output;
