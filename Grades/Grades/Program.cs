@@ -11,9 +11,6 @@ namespace Grades
         static void Main(string[] args)
         {
             GradeBook book = new GradeBook();
-            book.NameChanged += new NameChangedDelegate(OnNameChanged);
-            book.NameChanged += new NameChangedDelegate(OnNameChanged2);
-
 
             book.Name = "Lloyd-Eric's Gradebook";
             book.Name = "Gradebook";

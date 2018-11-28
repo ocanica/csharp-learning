@@ -18,9 +18,15 @@ namespace ConsoleUI
             Console.WriteLine($"Hello, { field1 } { field2 }");
         }
 
+        public static void ErrorMessage()
+        {
+            Console.WriteLine("Field is empty...");
+        }
+
         public static void EndApplication()
         {
             Console.ReadLine();
+            return;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace ConsoleUI
 
             StandardMessages.InstructionMessage("first");
             output.FirstName = Console.ReadLine();
+
             StandardMessages.InstructionMessage("last");
             output.LastName = Console.ReadLine();
 
