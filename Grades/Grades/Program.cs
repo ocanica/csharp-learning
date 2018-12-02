@@ -12,39 +12,38 @@ namespace Grades
         {
             GradeBook book = new GradeBook();
 
-            book.Name = "Lloyd-Eric's Gradebook";
-            book.Name = "Gradebook";
+            try
+            {
+                Console.WriteLine("Please enter a name");
+                book.Name = Console.ReadLine();
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
+            book.WriteGrades(Console.Out);
 
             GradeStatistics stats = book.ComputeStatistics();
 
-            Console.WriteLine(book.Name);
             WriteResult("Average", stats.AverageGrade);
-            WriteResult("Highest", (int)stats.HighestGrade);
+            WriteResult("Highest", stats.HighestGrade);
             WriteResult("Lowest", stats.LowestGrade);
+            WriteResult(stats.Description, stats.LetterGrade);
         }
 
-        static void WriteResult(string description, int result)
-        {
-            Console.WriteLine(description + ": " + result);
-        }
-
-        static void WriteResult(string description, float result)
+        static void WriteResult(string description, string result)
         {
             Console.WriteLine($"{description}: {result}");
         }
 
-        static void OnNameChanged(string existingName, string newName)
+        static void WriteResult(string description, float result)
         {
-            Console.WriteLine($"Grade book changing name from { existingName } to { newName }");
-        }
-
-        static void OnNameChanged2(string existingName, string newName)
-        {
-            Console.WriteLine("***");
+            Console.WriteLine($"{description}: {result:F2}");
         }
     }
 }
