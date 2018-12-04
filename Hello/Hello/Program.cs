@@ -6,7 +6,7 @@ namespace Hello
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Pleae type in your name: ");
+            Console.WriteLine("Please type in your name: ");
             string name = Console.ReadLine();
             Console.WriteLine("How many hours of sleep did you have?");
             int hoursOfSleep = int.Parse(Console.ReadLine());
