@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OCPLibrary;
+using OCP.Library;
 
 namespace ConsoleUI
 {
@@ -13,23 +13,24 @@ namespace ConsoleUI
         {
             List<PersonModel> applicants = new List<PersonModel>
             {
-                new PersonModel { FirstName = "Chris", LastName = "Martin"},
-                new PersonModel { FirstName = "Laura", LastName = "Chambers"},
-                new PersonModel { FirstName = "Erika", LastName = "Lawson"}
+                new PersonModel { FirstName = "James", LastName = "Watt"},
+                new PersonModel { FirstName = "Alexandra", LastName = "Flemming"},
+                new PersonModel { FirstName = "Deborah", LastName = "Louis"}
             };
 
-            List<EmployeeModel> employee = new List<EmployeeModel>();
+            List<EmployeeModel> employees = new List<EmployeeModel>();
             Accounts accountProcessor = new Accounts();
 
             foreach (PersonModel person in applicants)
             {
-                employee.Add(accountProcessor.Create(person));
+                employees.Add(accountProcessor.Create(person));
             }
 
-            foreach (EmployeeModel emp in employee)
+            foreach (EmployeeModel employee in employees)
             {
-                Console.WriteLine($"{ emp.FirstName } { emp.LastName } | { emp.EmailAddress } | { emp.EmployeeID }");
+                Console.WriteLine($"{ employee.FirstName } { employee.LastName }: { employee.EmailAddress }");
             }
+
         }
     }
 }

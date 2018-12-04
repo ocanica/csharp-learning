@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BECD4657-F7A0-42E4-8D64-E815D699370C}</ProjectGuid>
+    <ProjectGuid>{D974C88F-F766-4E64-BBE1-8294C3FA2CE1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsoleUI</RootNamespace>
     <AssemblyName>ConsoleUI</AssemblyName>
@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OCPLibrary\OCPLibrary.csproj">
-      <Project>{8ba05d7f-44a5-4a5b-b396-45310a085a37}</Project>
-      <Name>OCPLibrary</Name>
+    <ProjectReference Include="..\OCP.Library\OCP.Library.csproj">
+      <Project>{e6201eb5-a742-4a1b-bb03-ec16562e7d48}</Project>
+      <Name>OCP.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
