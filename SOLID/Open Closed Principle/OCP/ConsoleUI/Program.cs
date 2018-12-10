@@ -28,7 +28,7 @@ namespace ConsoleUI
 
             foreach (EmployeeModel employee in employees)
             {
-                Console.WriteLine($"{ employee.FirstName } { employee.LastName }: { employee.EmailAddress }");
+                Console.WriteLine($"{ employee.FirstName } { employee.LastName }: { employee.EmailAddress } IsManager: { (employee.IsManager ? "Yes" : "No") }");
             }
 
         }
