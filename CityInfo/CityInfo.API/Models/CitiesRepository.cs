@@ -7,30 +7,94 @@ namespace CityInfo.API.Models
 {
     public class CitiesRepository
     {
-        public List<CityDto> Cities;
-        public static CitiesRepository Current { get; } = new CitiesRepository();
+        public static CitiesRepository Current { get; set; } = new CitiesRepository();
+
+        public List<CitiesDto> Cities;
 
         public CitiesRepository()
         {
-            Cities = new List<CityDto>()
+            Cities = new List<CitiesDto>()
             {
-                new CityDto()
+                new CitiesDto()
                 {
                     Id = 1,
                     Name = "London",
-                    Description = "The one with Big Ben"
+                    Description = "The one with the big clock",
+                    PointsOfInterests = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto
+                        {
+                            Id = 1,
+                            Name = "Tower of London",
+                            Description = "Ye Old Dugeon"
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 2,
+                            Name = "The O2",
+                            Description = "Entertainment Arena"
+                        }
+                    }
                 },
-                new CityDto()
+                new CitiesDto()
                 {
                     Id = 2,
-                    Name = "New York City",
-                    Description = "The one with the Skyscrapers"
+                    Name = "Paris",
+                    Description = "The one with the fancy tower",
+                    PointsOfInterests = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto
+                        {
+                            Id = 1,
+                            Name = "Eiffel Tower",
+                            Description = "19th Centuary Landmark"
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 2,
+                            Name = "Louvre Museum",
+                            Description = "Prestigious Museum"
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 3,
+                            Name = "Notre-Dame de Paris",
+                            Description = "Iconic gothic church"
+                        }
+                    }
                 },
-                new CityDto()
+                new CitiesDto()
                 {
                     Id = 3,
-                    Name = "Cape Town",
-                    Description = "The one with the flat Mountain"
+                    Name = "New York City",
+                    Description = "The one with the skyscrapers",
+                    PointsOfInterests = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto
+                        {
+                            Id = 1,
+                            Name = "Statue of Liberty",
+                            Description = "American icon on New York Harbor"
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 2,
+                            Name = "Central Park",
+                            Description = "Urban Oasis",
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 3,
+                            Name = "Empire State Building",
+                            Description = "103-story landmark"
+                        },
+                        new PointsOfInterestDto
+                        {
+                            Id = 4,
+                            Name = "Theatre District",
+                            Description = "Home of Broadway"
+                        }
+                    }
                 }
             };
         }
