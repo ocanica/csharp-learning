@@ -13,13 +13,70 @@ namespace CityInfo.API.Controllers
         [HttpGet("{cityId}/pointsofinterest")]
         public IActionResult GetPointsOfInterest(int cityId)
         {
-            var cityToReturn = CitiesRepository.Current.Cities.FirstOrDefault(
+            var city = CitiesRepository.Current.Cities.FirstOrDefault(
                 x => x.Id == cityId);
-            if (cityToReturn == null)
+
+            if (city == null)
             {
                 return NotFound();
             }
-            return Ok(cityToReturn.PointsOfInterests);
+
+            return Ok(city.PointsOfInterests);
+        }
+
+        [HttpGet("{cityId}/pointsofinterest/{pointOfInterestId}", Name = "GetPointOfInterest")]
+        public IActionResult GetPointOfInterest(int cityId, int pointOfInterestId)
+        {
+            var city = CitiesRepository.Current.Cities.FirstOrDefault(
+                x => x.Id == cityId);
+
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            var pointOfInterestToReturn = city.PointsOfInterests.FirstOrDefault(
+                y => y.Id == pointOfInterestId);
+
+            if (pointOfInterestToReturn == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(pointOfInterestToReturn);
+        }
+
+        [HttpPost("{cityId}/pointsofinterest")]
+        public IActionResult CreatePointOfInterest(int cityId,
+            [FromBody] PointOfInterestForCreationDto pointsOfInterest)
+        {
+            if (pointsOfInterest == null)
+            {
+                return BadRequest();
+            }
+
+            var city = CitiesRepository.Current.Cities.FirstOrDefault(
+                x => x.Id == cityId);
+
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            int maxPointOfInterestId = CitiesRepository.Current.Cities.SelectMany(
+                x => x.PointsOfInterests).Max(y => y.Id);
+
+            var finalPointOfInterest = new PointsOfInterestDto()
+            {
+                Id = ++maxPointOfInterestId,
+                Name = pointsOfInterest.Name,
+                Description = pointsOfInterest.Description
+            };
+
+            city.PointsOfInterests.Add(finalPointOfInterest);
+
+            return CreatedAtRoute("GetPointOfInterest", new
+            { cityId = cityId, pointOfInterestId = finalPointOfInterest.Id }, finalPointOfInterest);
         }
     }
 }

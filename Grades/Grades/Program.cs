@@ -11,8 +11,9 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            GradeBook book = new GradeBook();
-            NewMethod(book);
+            GradeBook book = new ThrowAwayGradeBook();
+
+            // EnterName(book);
             AddGrades(book);
             SaveGrades(book);
             WriteResults(book);
@@ -43,7 +44,7 @@ namespace Grades
             book.AddGrade(75);
         }
 
-        private static void NewMethod(GradeBook book)
+        private static void EnterName(GradeBook book)
         {
             try
             {

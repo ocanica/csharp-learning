@@ -45,19 +45,19 @@ namespace CityInfo.API.Models
                     {
                         new PointsOfInterestDto
                         {
-                            Id = 1,
+                            Id = 3,
                             Name = "Eiffel Tower",
                             Description = "19th Centuary Landmark"
                         },
                         new PointsOfInterestDto
                         {
-                            Id = 2,
+                            Id = 4,
                             Name = "Louvre Museum",
                             Description = "Prestigious Museum"
                         },
                         new PointsOfInterestDto
                         {
-                            Id = 3,
+                            Id = 5,
                             Name = "Notre-Dame de Paris",
                             Description = "Iconic gothic church"
                         }
@@ -72,25 +72,25 @@ namespace CityInfo.API.Models
                     {
                         new PointsOfInterestDto
                         {
-                            Id = 1,
+                            Id = 6,
                             Name = "Statue of Liberty",
                             Description = "American icon on New York Harbor"
                         },
                         new PointsOfInterestDto
                         {
-                            Id = 2,
+                            Id = 7,
                             Name = "Central Park",
                             Description = "Urban Oasis",
                         },
                         new PointsOfInterestDto
                         {
-                            Id = 3,
+                            Id = 8,
                             Name = "Empire State Building",
                             Description = "103-story landmark"
                         },
                         new PointsOfInterestDto
                         {
-                            Id = 4,
+                            Id = 9,
                             Name = "Theatre District",
                             Description = "Home of Broadway"
                         }
