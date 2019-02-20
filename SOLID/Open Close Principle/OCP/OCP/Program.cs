@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OCP.Library
+namespace OCP
 {
-    public enum EmployeeType
+    class Program
     {
-        Staff,
-        Manager
+        static void Main(string[] args)
+        {
+        }
     }
 }
