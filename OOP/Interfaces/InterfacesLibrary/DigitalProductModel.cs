@@ -16,7 +16,7 @@ namespace InterfacesLibrary
         {
             if (!OrderCompleted)
             {
-                Console.WriteLine($"Simulating emailing { Title } to { customer.EmailAddress }");
+                Console.WriteLine($"Emailing { Title } to { customer.EmailAddress }");
                 DownloadsRemaining -= 1;
 
                 if(DownloadsRemaining < 1)
