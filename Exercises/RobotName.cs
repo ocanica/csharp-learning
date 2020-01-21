@@ -10,7 +10,7 @@ public class Robot
         }
     }
 
-    public static string RandAlpha()
+    private static string RandAlpha()
     {
         Random rng = new Random();
         string output = "";
