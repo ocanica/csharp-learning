@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BowlingGame
+namespace BowlingGameTDD
 {
-    class Program
+    public class Game
     {
         static void Main(string[] args)
         {
