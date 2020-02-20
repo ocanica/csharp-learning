@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tweetbook.Contracts;
+using Tweetbook.Contracts.V1;
 using Tweetbook.Domain;
 
-namespace Tweetbook.Controllers
+namespace Tweetbook.Controllers.V1
 {
     public class PostController : Controller
     {
@@ -20,7 +22,7 @@ namespace Tweetbook.Controllers
             }
         }
 
-        [HttpGet("api/v1/posts")]
+        [HttpGet(ApiRoutes.Posts.GetAll)]
         public IActionResult GetAll()
         {
             return Ok(_posts);

@@ -1,19 +1,20 @@
 using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
+//using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
-using Tweetbook.Data;
+//using Microsoft.AspNetCore.HttpsPolicy;
+//using Microsoft.EntityFrameworkCore;
+//using Tweetbook.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Tweetbook.Options;
+//using Microsoft.OpenApi.Models;
+using Tweetbook.Installers;
+using Tweetbook.Options; 
 
 namespace Tweetbook
 {
@@ -29,17 +30,10 @@ namespace Tweetbook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<DataContext>();
-            //services.AddControllersWithViews();
-            //services.AddRazorPages();
-            services.AddSwaggerGen( x =>
-            {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Tweetbook API", Version = "v1" });
-            });
+            var installers = typeof(Startup).Assembly.ExportedTypes.Where(x =>
+                typeof(IInstaller).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract).Select(Activator.CreateInstance).Cast<IInstaller>().ToList();
+            
+            installers.ForEach(installer => installer.InstallServices(services, Configuration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,17 +47,17 @@ namespace Tweetbook
             {
                 app.UseHsts();
             }
+
             var swaggeroptions = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggeroptions);
-
             app.UseSwagger(option => { option.RouteTemplate = swaggeroptions.JsonRoute; });
             app.UseSwaggerUI(option => { option.SwaggerEndpoint(swaggeroptions.UiEndpoint, swaggeroptions.Description); });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            // app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
