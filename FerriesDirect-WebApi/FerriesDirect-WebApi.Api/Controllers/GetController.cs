@@ -13,26 +13,26 @@ namespace FerriesDirect_WebApi.Api.Controllers
     public class GetController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly PersonDto _person;
+        private readonly Task<List<PersonDto>> _repo;
 
         public GetController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            _repo = DeserialiseJsonAsnyc();
         }
 
-        public PersonDto DeserialisePerson(string json)
-        {
-            return JsonSerializer.Deserialize<PersonDto>(json);
-        }
-
-        [HttpGet("api/v1/test")]
-        public async Task<List<PersonDto>> Index()
+        public async Task<List<PersonDto>> DeserialiseJsonAsnyc()
         {
             
             var client = _httpClientFactory.CreateClient("mockable");
             var response = await client.GetStringAsync("");
-            var personDto = JsonSerializer.Deserialize<List<PersonDto>>(response);
-            return personDto;
+            var result = JsonSerializer.Deserialize<List<PersonDto>>(response);
+            return result;
+        }
+
+        public async void TestGetMethod(List<PersonDto> results)
+        {
+            results = await DeserialiseJsonAsnyc();
         }
 
         /// <summary>
@@ -40,11 +40,18 @@ namespace FerriesDirect_WebApi.Api.Controllers
         /// Function returns all the results from the current end-point 
         /// </summary>
         [HttpGet(ApiRoutes.Items.GetAll)]
-        public async Task<ActionResult> GetAll()
+        public ActionResult GetAll()
         {
-            var client = _httpClientFactory.CreateClient("mockable");
-            var response = await client.GetStringAsync("");
-            return Ok(response);
+            var result = JsonSerializer.Serialize(_repo);
+            return Ok(result);
+        }
+
+        [HttpGet("api/v1/test")]
+        public ActionResult ListPersonByName()
+        {
+            
+            // var result = _repo.OrderBy(x => x.FirstName).ToList();
+            return Ok();
         }
     }
 }
