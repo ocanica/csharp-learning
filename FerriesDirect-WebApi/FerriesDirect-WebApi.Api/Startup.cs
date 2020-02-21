@@ -26,6 +26,12 @@ namespace FerriesDirect_WebApi.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //Injected HttpClient to services container
+            services.AddHttpClient("mockable", c =>
+            {
+                c.BaseAddress = new Uri("http://demo6957850.mockable.io/people");
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
