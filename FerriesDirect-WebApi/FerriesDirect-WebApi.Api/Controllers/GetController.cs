@@ -12,45 +12,54 @@ namespace FerriesDirect_WebApi.Api.Controllers
 {
     public class GetController : Controller
     {
-        readonly IHttpClientFactory _httpClientFactory;
-        List<PersonDto> _repo;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly Task<List<PersonDto>> _repo;
 
         public GetController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            GetJsonResponseAsync();
+            _repo = DeserialiseJsonAsnyc();
         }
 
-        // Return deserialised JSON response to repository
-        private async void GetJsonResponseAsync()
-        {
-            _repo = await DeserialiseJsonAsnyc();
-        }
-
+        /// <summary>
+        /// Asynchronous network call that returns a deserialised list 
+        /// of objects Task<List<T>>.
+        /// </summary>
+        /// <remarks>
+        /// Needs refactoring to implement try catch block
+        /// </remarks>
         private async Task<List<PersonDto>> DeserialiseJsonAsnyc()
         {
             var client = _httpClientFactory.CreateClient("mockable");
             var response = await client.GetStringAsync("");
-            var result = JsonSerializer.Deserialize<List<PersonDto>>(response);
-            return result;
+            return JsonSerializer.Deserialize<List<PersonDto>>(response);
         }
 
         /// <summary>
-        /// GET api/v1/get
-        /// Function returns all the results from the current end-point 
+        /// Returns a sorted, serialised JSON string object if queries name or
+        /// score are passed; otherwise the function returns an unsorted string
         /// </summary>
-        [HttpGet(ApiRoutes.Items.GetAll)]
-        public ActionResult GetAll()
+        /// <param name="orderType">name, score</param>
+        /// <returns></returns>
+        [HttpGet("api/v1/get")]
+        public async Task<ActionResult> Get([FromQuery] string orderType)
         {
-            return Ok(JsonSerializer.Serialize(_repo));
+            var repo = await _repo;
+            IEnumerable<PersonDto> result;
+            switch (orderType)
+            {
+                case "name":
+                    result = repo.OrderBy(x => x.FirstName);
+                    break;
+                case "score":
+                    result = repo.OrderByDescending(x => x.Score);
+                    break;
+                default:
+                    return Ok(JsonSerializer.Serialize(repo));
+            }
+
+            return Ok(JsonSerializer.Serialize(result));
         }
 
-        [HttpGet("api/v1/test")]
-        public ActionResult ListPersonByName()
-        {
-            //var orderedBy = _repo.OrderByDescending(x => x.FirstName);
-            //var result = JsonSerializer.Serialize(orderedBy);
-            return Ok();
-        }
     }
 }
