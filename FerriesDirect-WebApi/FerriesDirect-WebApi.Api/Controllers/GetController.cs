@@ -12,27 +12,27 @@ namespace FerriesDirect_WebApi.Api.Controllers
 {
     public class GetController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly Task<List<PersonDto>> _repo;
+        readonly IHttpClientFactory _httpClientFactory;
+        List<PersonDto> _repo;
 
         public GetController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            _repo = DeserialiseJsonAsnyc();
+            GetJsonResponseAsync();
         }
 
-        public async Task<List<PersonDto>> DeserialiseJsonAsnyc()
+        // Return deserialised JSON response to repository
+        private async void GetJsonResponseAsync()
         {
-            
+            _repo = await DeserialiseJsonAsnyc();
+        }
+
+        private async Task<List<PersonDto>> DeserialiseJsonAsnyc()
+        {
             var client = _httpClientFactory.CreateClient("mockable");
             var response = await client.GetStringAsync("");
             var result = JsonSerializer.Deserialize<List<PersonDto>>(response);
             return result;
-        }
-
-        public async void TestGetMethod(List<PersonDto> results)
-        {
-            results = await DeserialiseJsonAsnyc();
         }
 
         /// <summary>
@@ -42,15 +42,14 @@ namespace FerriesDirect_WebApi.Api.Controllers
         [HttpGet(ApiRoutes.Items.GetAll)]
         public ActionResult GetAll()
         {
-            var result = JsonSerializer.Serialize(_repo);
-            return Ok(result);
+            return Ok(JsonSerializer.Serialize(_repo));
         }
 
         [HttpGet("api/v1/test")]
         public ActionResult ListPersonByName()
         {
-            
-            // var result = _repo.OrderBy(x => x.FirstName).ToList();
+            //var orderedBy = _repo.OrderByDescending(x => x.FirstName);
+            //var result = JsonSerializer.Serialize(orderedBy);
             return Ok();
         }
     }
