@@ -1,5 +1,4 @@
-﻿using FerriesDirect_WebApi.Api.Contracts.V1;
-using FerriesDirect_WebApi.Api.Models;
+﻿using FerriesDirect_WebApi.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace FerriesDirect_WebApi.Api.Controllers
 {
-    public class GetController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class GetController : ControllerBase
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly Task<List<PersonDto>> _repo;
@@ -41,7 +42,7 @@ namespace FerriesDirect_WebApi.Api.Controllers
         /// </summary>
         /// <param name="orderType">name, score</param>
         /// <returns></returns>
-        [HttpGet("api/v1/get")]
+        [HttpGet()]
         public async Task<ActionResult> Get([FromQuery] string orderType)
         {
             var repo = await _repo;
