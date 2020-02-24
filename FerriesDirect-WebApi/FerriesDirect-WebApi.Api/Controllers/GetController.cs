@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace FerriesDirect_WebApi.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     public class GetController : ControllerBase
     {
         private readonly IHttpClientFactory _httpClientFactory;
