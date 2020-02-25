@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace FerriesDirect_WebApi.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class PeopleController : ControllerBase
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -41,8 +40,10 @@ namespace FerriesDirect_WebApi.Api.Controllers
         /// score are passed; otherwise the function returns an unsorted string
         /// </summary>
         /// <param name="orderType">name, score</param>
-        /// <returns></returns>
-        [HttpGet]
+        /// <remarks>
+        /// Example usesage: api/people?ordertype=name
+        /// </remarks>
+        [HttpGet()]
         public async Task<ActionResult> Get([FromQuery] string orderType)
         {
             var repo = await _repo;
@@ -61,15 +62,5 @@ namespace FerriesDirect_WebApi.Api.Controllers
 
             return Ok(JsonSerializer.Serialize(result));
         }
-
-        [HttpGet("First")]
-        public async Task<ActionResult> ReturnFirstItem()
-        {
-            var repo = await _repo;
-            var result = repo.First();
-            return Ok(JsonSerializer.Serialize(result));
-
-        }
-
     }
 }

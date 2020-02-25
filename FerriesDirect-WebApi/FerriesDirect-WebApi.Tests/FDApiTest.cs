@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
@@ -12,7 +13,7 @@ namespace FerriesDirect_WebApi.Tests
     public class FDApiTest
     {
         private readonly HttpClient _client;
-        private readonly string url = "people";
+        private readonly string baseUrl = "api/people";
 
         public FDApiTest()
         {
@@ -30,7 +31,7 @@ namespace FerriesDirect_WebApi.Tests
         {
             // "AAA" testing pattern
             // Arrange
-            var response = await _client.GetAsync(url);
+            var response = await _client.GetAsync(baseUrl);
             // Act
             response.EnsureSuccessStatusCode();
             // Assert
@@ -38,13 +39,48 @@ namespace FerriesDirect_WebApi.Tests
         }
 
         [Fact]
-        public async Task Get_ReturnsJsonResult()
+        public async Task Get_ReturnsResult()
         {
-            var response = await _client.GetAsync(url);
-            Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType.ToString());
+            var response = await _client.GetAsync(baseUrl);
+            response.EnsureSuccessStatusCode();
+            Assert.NotNull(response.Content);
+            Assert.Equal("text/plain; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
 
         [Fact]
+        public async Task Get_ReturnAllResults()
+        {
+            var testItem = new List<PersonDto>()
+            {
+                new PersonDto { FirstName = "Nazim", Surname = "Ellis", Score = 100 },
+                new PersonDto { FirstName = "Maximilian", Surname = "Vicker", Score = 12},
+                new PersonDto { FirstName = "Cheyenne", Surname = "Flowers", Score = 47},
+                new PersonDto { FirstName = "Tonya", Surname = "Lyons", Score = 12}
+            };
+            
+            var response = await _client.GetAsync(baseUrl);
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(JsonSerializer.Serialize(testItem), response.Content.ReadAsStringAsync().Result);
+        }
+
+        [Fact]
+        public async Task Get_SortedScoreResult()
+        {
+            var testItem = new List<PersonDto>()
+            {
+                new PersonDto { FirstName = "Nazim", Surname = "Ellis", Score = 100 },
+                new PersonDto { FirstName = "Cheyenne", Surname = "Flowers", Score = 47},
+                new PersonDto { FirstName = "Maximilian", Surname = "Vicker", Score = 12},
+                new PersonDto { FirstName = "Tonya", Surname = "Lyons", Score = 12}
+            };
+
+            var response = await _client.GetAsync($"{baseUrl}?ordertype=score");
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(JsonSerializer.Serialize(testItem), response.Content.ReadAsStringAsync().Result);
+        }
+
+        // Old test
+        /*[Fact]
         public async Task Get_ResturnsFirstJsonResult()
         {
             var testItem = new PersonDto()
@@ -54,11 +90,9 @@ namespace FerriesDirect_WebApi.Tests
                 Score = 100
             };
 
-            //var peopleController = new PeopleController();
             var response = await _client.GetAsync($"{url}/first");
-            //var actionResult = await peopleC
             var assertion = JsonSerializer.Serialize(testItem);
-            //Assert.Equal(assertion,);
-        }
+            Assert.Equal(assertion, response.Content.ReadAsStringAsync().Result);
+        }*/
     }
 }
