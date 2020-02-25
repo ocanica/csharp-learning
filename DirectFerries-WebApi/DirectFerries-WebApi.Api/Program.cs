@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace FerriesDirect_WebApi.Api
+namespace DirectFerries_WebApi.Api
 {
     public class Program
     {

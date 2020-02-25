@@ -1,4 +1,4 @@
-﻿namespace FerriesDirect_WebApi.Api.Models
+﻿namespace DirectFerries_WebApi.Api.Models
 {
     public class PersonDto
     {

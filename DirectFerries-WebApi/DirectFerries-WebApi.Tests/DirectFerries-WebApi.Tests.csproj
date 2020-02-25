@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>FerriesDirect_WebApi.Tests</RootNamespace>
+    <RootNamespace>DirectFerries_WebApi.Tests</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FerriesDirect-WebApi.Api\FerriesDirect-WebApi.Api.csproj" />
+    <ProjectReference Include="..\DirectFerries-WebApi.Api\DirectFerries-WebApi.Api.csproj" />
   </ItemGroup>
 
 </Project>

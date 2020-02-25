@@ -1,4 +1,4 @@
-﻿using FerriesDirect_WebApi.Api.Models;
+﻿using DirectFerries_WebApi.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace FerriesDirect_WebApi.Api.Controllers
+namespace DirectFerries_WebApi.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -41,7 +41,7 @@ namespace FerriesDirect_WebApi.Api.Controllers
         /// </summary>
         /// <param name="orderType">name, score</param>
         /// <remarks>
-        /// Example usesage: api/people?ordertype=name
+        /// Example usesage: api/people?ordertype=score
         /// </remarks>
         [HttpGet()]
         public async Task<ActionResult> Get([FromQuery] string orderType)

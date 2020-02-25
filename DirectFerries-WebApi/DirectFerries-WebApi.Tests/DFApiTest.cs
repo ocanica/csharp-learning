@@ -1,23 +1,22 @@
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FerriesDirect_WebApi.Api.Models;
+using DirectFerries_WebApi.Api.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace FerriesDirect_WebApi.Tests
 {
-    public class FDApiTest
+    public class DFApiTest
     {
         private readonly HttpClient _client;
         private readonly string baseUrl = "api/people";
 
-        public FDApiTest()
+        public DFApiTest()
         {
-            var factory = new WebApplicationFactory<Api.Startup>();
+            var factory = new WebApplicationFactory<DirectFerries_WebApi.Api.Startup>();
             _client = factory.CreateClient();
         }
 
