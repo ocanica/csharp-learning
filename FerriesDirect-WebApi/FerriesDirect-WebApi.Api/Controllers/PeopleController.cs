@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace FerriesDirect_WebApi.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [Produces("application/json")]
-    public class GetController : ControllerBase
+    public class PeopleController : ControllerBase
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly Task<List<PersonDto>> _repo;
 
-        public GetController(IHttpClientFactory httpClientFactory)
+        public PeopleController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _repo = DeserialiseJsonAsnyc();
@@ -42,7 +42,7 @@ namespace FerriesDirect_WebApi.Api.Controllers
         /// </summary>
         /// <param name="orderType">name, score</param>
         /// <returns></returns>
-        [HttpGet()]
+        [HttpGet]
         public async Task<ActionResult> Get([FromQuery] string orderType)
         {
             var repo = await _repo;
@@ -60,6 +60,15 @@ namespace FerriesDirect_WebApi.Api.Controllers
             }
 
             return Ok(JsonSerializer.Serialize(result));
+        }
+
+        [HttpGet("First")]
+        public async Task<ActionResult> ReturnFirstItem()
+        {
+            var repo = await _repo;
+            var result = repo.First();
+            return Ok(JsonSerializer.Serialize(result));
+
         }
 
     }
