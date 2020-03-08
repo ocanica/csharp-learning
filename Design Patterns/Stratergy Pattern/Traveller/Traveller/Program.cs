@@ -1,5 +1,4 @@
-﻿using System;
-using Traveller.TravelStratergies;
+﻿using Traveller.Stratergy;
 
 namespace Traveller
 {
@@ -7,8 +6,16 @@ namespace Traveller
     {
         static void Main(string[] args)
         {
-            TravelPlanner travelPlanner = new TravelPlanner(new Bus());
-            travelPlanner.Travel(80);
+            TravelPlanner travelPlanner = new TravelPlanner(new Diesel());
+            travelPlanner.GetAdvisoryFuelRate();
+            travelPlanner.ChangeEngineSize(EngineSize.Medium);
+            travelPlanner.GetAdvisoryFuelRate();
+            travelPlanner.ChangeVehicleType(new Electric());
+            travelPlanner.GetAdvisoryFuelRate();
+            travelPlanner.ChangeEngineSize(EngineSize.Large);
+            travelPlanner.ChangeVehicleType(new Petrol(EngineSize.Large));
+            travelPlanner.GetAdvisoryFuelRate();
+
         }
     }
 }

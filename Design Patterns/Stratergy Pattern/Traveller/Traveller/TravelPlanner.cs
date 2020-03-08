@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Traveller.Stratergy;
 
 namespace Traveller
 {
     public class TravelPlanner
     {
-        private readonly TravelStratergy _travelStratergy;
+        private IAdvisoryFuelRate _advisoryFuelRate;
 
-        public TravelPlanner(TravelStratergy travelStratergy)
+        public TravelPlanner(IAdvisoryFuelRate advisoryFuelRate)
         {
-            _travelStratergy = travelStratergy;
+            _advisoryFuelRate = advisoryFuelRate;
         }
 
-        public void Travel(int miles)
+        public void ChangeVehicleType(IAdvisoryFuelRate advisoryFuelRate)
+            => _advisoryFuelRate = advisoryFuelRate;
+
+        public void ChangeEngineSize(EngineSize engineSize)
+            => _advisoryFuelRate.ChangeEngineSize(engineSize);
+
+        public void GetAdvisoryFuelRate()
         {
-            var cost = _travelStratergy.Travel(miles);
-            Console.WriteLine($"Cost of travel: {cost}");
+            Console.WriteLine($"The AVL for a {_advisoryFuelRate.engineSize} {_advisoryFuelRate.EngineType} engine " +
+                $"is: {_advisoryFuelRate.PencePerMile} per mile");
         }
     }
 }
