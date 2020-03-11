@@ -8,7 +8,7 @@ namespace Traveller.Stratergy
     {
         public float PencePerMile { get; private set; }
 
-        //public EngineSize engineSize { get; private set; }
+        public EngineSize engineSize { get; private set; }
 
         public string EngineType { get; private set; }
 
