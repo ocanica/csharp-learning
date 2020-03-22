@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SimpleUsers_WebApi.Data;
-using SimpleUsers_WebApi.Models;
+using SimpleUser_WebApi.Data;
+using SimpleUser_WebApi.Models;
 
-namespace SimpleUsers_WebApi.Controllers
+namespace SimpleUser_WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

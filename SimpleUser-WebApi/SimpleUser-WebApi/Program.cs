@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SimpleUsers_WebApi
+namespace SimpleUser_WebApi
 {
     public class Program
     {
